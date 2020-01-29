@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 def create_app():
     app = Flask(__name__)
@@ -7,9 +7,8 @@ def create_app():
     def index():
         return 'Index Page'
 
-    @app.route('/')
-    def hello_world():
-        return 'Hello, World!'
-    
-return app
+    @app.route('/hello')
+    def hello():
+        return render_template('base.html', title='hello')
 
+    return app
